@@ -10,7 +10,8 @@ public class Main extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
 
-            fxmlLoader.setLocation(getClass().getClassLoader().getResource("resources/mainUI.fxml"));
+            fxmlLoader.setLocation(getClass().getClassLoader()
+                            .getResource("resources/mainUI.fxml"));
             Pane root = fxmlLoader.load();
             primaryStage.setTitle("Tic Tac Toe");
             primaryStage.setScene(new Scene(root));

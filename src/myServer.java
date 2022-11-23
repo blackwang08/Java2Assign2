@@ -9,6 +9,7 @@ class Player {
     DataInputStream datainput = null;
     String name;
     String mark;
+
     public Player(Socket s) {
         this.socket = s;
         try {
@@ -21,7 +22,8 @@ class Player {
             System.exit(1);
         }
     }
-    public void init (String name, String mark) {
+
+    public void init(String name, String mark) {
         this.name = name;
         this.mark = mark;
     }
@@ -41,6 +43,7 @@ public class myServer {
             {MARK_NONE, MARK_NONE, MARK_NONE},
             {MARK_NONE, MARK_NONE, MARK_NONE}
     };
+
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
         Socket client1 = null;
@@ -60,7 +63,7 @@ public class myServer {
         try {
             System.out.println("Waiting for the connection of player1");
             client1 = serverSocket.accept();
-        } catch (IOException | SecurityException e) {
+        } catch(IOException | SecurityException e) {
             System.err.println ("Error for connection");
             System.exit(1);
         }
@@ -72,7 +75,7 @@ public class myServer {
         try {
             System.out.println("Waiting for the connection of player2");
             client2 = serverSocket.accept();
-        } catch (IOException | SecurityException e) {
+        } catch(IOException | SecurityException e) {
             System.err.println ("Error for connection");
             System.exit(1);
         }
@@ -126,25 +129,25 @@ public class myServer {
 
     private static String state() {
         for (int i = 0; i < 3; i++) {
-            if ((!chessBoard[i][0].equals(MARK_NONE)) &&
-                    chessBoard[i][0].equals(chessBoard[i][1]) &&
-                    chessBoard[i][1].equals(chessBoard[i][2])) {
+            if ((!chessBoard[i][0].equals(MARK_NONE))
+                    && chessBoard[i][0].equals(chessBoard[i][1])
+                    && chessBoard[i][1].equals(chessBoard[i][2])) {
                 return ENDGAME;
             }
-            if ((!chessBoard[0][i].equals(MARK_NONE)) &&
-                    chessBoard[0][i].equals(chessBoard[1][i]) &&
-                    chessBoard[1][i].equals(chessBoard[2][i])) {
+            if ((!chessBoard[0][i].equals(MARK_NONE))
+                    && chessBoard[0][i].equals(chessBoard[1][i])
+                    && chessBoard[1][i].equals(chessBoard[2][i])) {
                 return ENDGAME;
             }
         }
-        if ((!chessBoard[0][0].equals(MARK_NONE)) &&
-                chessBoard[0][0].equals(chessBoard[1][1]) &&
-                chessBoard[1][1].equals(chessBoard[2][2])) {
+        if ((!chessBoard[0][0].equals(MARK_NONE))
+                && chessBoard[0][0].equals(chessBoard[1][1])
+                && chessBoard[1][1].equals(chessBoard[2][2])) {
             return ENDGAME;
         }
-        if ((!chessBoard[2][0].equals(MARK_NONE)) &&
-                chessBoard[2][0].equals(chessBoard[1][1]) &&
-                chessBoard[1][1].equals(chessBoard[0][2])) {
+        if ((!chessBoard[2][0].equals(MARK_NONE))
+                && chessBoard[2][0].equals(chessBoard[1][1])
+                && chessBoard[1][1].equals(chessBoard[0][2])) {
             return ENDGAME;
         }
         if (isdraw()) {
